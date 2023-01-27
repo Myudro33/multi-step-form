@@ -1,8 +1,11 @@
 import React from 'react'
+import FormWrapper from './Components/FormWrapper'
 
 const App = () => {
   return (
-    <div>App</div>
+    <div className='app'>
+      <FormWrapper/>
+    </div>
   )
 }
 
