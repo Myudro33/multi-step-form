@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import LeftBar from "./LeftBar";
+import RightBar from "./RightBar";
 
 const FormWrapper = () => {
+    const [page, setpage] = useState(2)
   return (
     <Container>
-      <LeftBar />
+      <LeftBar page={page} setpage={setpage} />
+      <RightBar page={page} setpage={setpage} />
     </Container>
   );
 };

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-const LeftBar = () => {
+import { PersonalProps } from "./PersonalInfo";
+
+const LeftBar = ({page,setpage}:PersonalProps) => {
   const data = [
     { id: 1, title1: "step1", title2: "your info", active: true },
     {
@@ -18,7 +20,7 @@ const LeftBar = () => {
     <Container>
         {data.map((item)=>(
       <StepContainer>
-        <PageNumber full={item.active} >{item.id}</PageNumber>
+        <PageNumber full={item.id===page} >{item.id}</PageNumber>
         <StepTitleContainer key={item.id} >
           <StepTitleP>{item.title1}</StepTitleP>
           <StepTitleP bold>{item.title2}</StepTitleP>
