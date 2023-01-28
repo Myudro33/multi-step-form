@@ -4,13 +4,16 @@ import LeftBar from "./LeftBar";
 import RightBar from "./RightBar";
 
 const FormWrapper = () => {
-    const [page, setpage] = useState(2)
+    const [page, setpage] = useState(3)
+    
   return (
     <Container>
       <LeftBar page={page} setpage={setpage} />
       <RightBar page={page} setpage={setpage} />
     </Container>
   );
+  
+  
 };
 
 export default FormWrapper;

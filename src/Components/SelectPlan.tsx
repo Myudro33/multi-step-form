@@ -116,7 +116,7 @@ const ErrorTitle = styled.p`
   font-weight: 700;
 `;
 
-const Navigation = styled.div`
+export const Navigation = styled.div`
   width: 100%;
   height: 40px;
   display: flex;
