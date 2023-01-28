@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import PersonalInfo from './PersonalInfo'
 import SelectPlan from './SelectPlan'
 
 const RightBar = ({page,setpage}) => {
+  const [selectedPlan, setselectedPlan] = useState({name:'',plan:'',price:''})
+ 
   return (
     <Container>
         {page===1&&(
             <PersonalInfo setpage={setpage} />
         )}
         {page===2&&(
-          <SelectPlan setpage={setpage}  />
+          <SelectPlan setselectedPlan={setselectedPlan} selectedPlan={selectedPlan} setpage={setpage}  />
         )}
     </Container>
   )

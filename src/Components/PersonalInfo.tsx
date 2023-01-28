@@ -93,7 +93,7 @@ const PersonalInfo = ({setpage}:PersonalProps) => {
 
 export default PersonalInfo;
 
-const Button = styled.button`
+export const Button = styled.button`
   background-color: hsl(213, 96%, 18%);
   width: 103px;
   height: 40px;
@@ -103,7 +103,7 @@ const Button = styled.button`
   font-weight: 700;
   color: #d9d6e6;
   align-self: flex-end;
-  margin-top: 140px;
+  margin-top: 130px;
   cursor: pointer;
   &:hover {
     background-color: hsl(243, 100%, 62%);

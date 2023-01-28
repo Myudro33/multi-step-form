@@ -2,31 +2,40 @@ import React from "react";
 import styled from "styled-components";
 import { PersonalProps } from "./PersonalInfo";
 
-const LeftBar = ({page,setpage}:PersonalProps) => {
+const LeftBar = ({ page, setpage }: PersonalProps) => {
   const data = [
     { id: 1, title1: "step1", title2: "your info", active: true },
     {
-        id:2,title1:'step2', title2:'select plan',active:false
+      id: 2,
+      title1: "step2",
+      title2: "select plan",
+      active: false,
     },
     {
-        id:3,title1:'step3', title2:'add-ons',active:false
+      id: 3,
+      title1: "step3",
+      title2: "add-ons",
+      active: false,
     },
     {
-        id:4,title1:'step4', title2:'summary',active:false
+      id: 4,
+      title1: "step4",
+      title2: "summary",
+      active: false,
     },
   ];
 
   return (
     <Container>
-        {data.map((item)=>(
-      <StepContainer>
-        <PageNumber full={item.id===page} >{item.id}</PageNumber>
-        <StepTitleContainer key={item.id} >
-          <StepTitleP>{item.title1}</StepTitleP>
-          <StepTitleP bold>{item.title2}</StepTitleP>
-        </StepTitleContainer>
-      </StepContainer>
-        ))}
+      {data.map((item) => (
+        <StepContainer key={item.id}>
+          <PageNumber full={item.id === page}>{item.id}</PageNumber>
+          <StepTitleContainer>
+            <StepTitleP>{item.title1}</StepTitleP>
+            <StepTitleP bold>{item.title2}</StepTitleP>
+          </StepTitleContainer>
+        </StepContainer>
+      ))}
     </Container>
   );
 };
@@ -41,8 +50,8 @@ const PageNumber = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${props=>props.full?'black':'white'};
-  background-color: ${props=>props.full?'#bfe2fd':'transparent'};
+  color: ${(props) => (props.full ? "black" : "white")};
+  background-color: ${(props) => (props.full ? "#bfe2fd" : "transparent")};
   font-weight: 700;
 `;
 
