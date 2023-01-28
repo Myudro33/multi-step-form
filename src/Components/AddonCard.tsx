@@ -5,14 +5,42 @@ interface CardProps {
   id: number;
   title: string;
   paragraph: string;
-  price: string;
+  price: number;
   active: boolean;
+  setaddon: React.Dispatch<React.SetStateAction<any>>;
+  selectedPlan:{
+    name:string;
+    plan:string
+  }
 }
 
-const AddonCard = ({ active, id, paragraph, price, title }: CardProps) => {
+const AddonCard = ({
+  active,
+  id,
+  paragraph,
+  price,
+  title,
+  setaddon,
+  selectedPlan
+}: CardProps) => {
   const [selected, setselected] = useState(false);
+  
+  const clickHandler = () => {
+    setselected(!selected);
+    if (!selected) {
+      const sameElement = (element) => element.name === title;
+      setaddon((prev) => {
+        if (!prev.some(sameElement)) {
+          return [...prev, { name: title, price: price }];
+        }
+        return prev;
+      });
+    } else {
+      setaddon((prev) => prev.filter((item) => item.name !== title));
+    }
+  };
   return (
-    <Container onClick={() => setselected(!selected)} active={selected}>
+    <Container onClick={clickHandler} active={selected}>
       <LeftContainer>
         <Checkbox
           onChange={() => setselected(!selected)}
@@ -24,7 +52,7 @@ const AddonCard = ({ active, id, paragraph, price, title }: CardProps) => {
           <Paragraph>{paragraph}</Paragraph>
         </TitleContainer>
       </LeftContainer>
-      <Paragraph>{price}</Paragraph>
+      <Paragraph>{`$${price}/${selectedPlan.plan==='Monthly'?'mo':'yr'}`}</Paragraph>
     </Container>
   );
 };

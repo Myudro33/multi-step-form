@@ -5,14 +5,14 @@ import advanced from "../assets/icon-advanced.svg";
 interface PlanCardProps {
   id: number;
   name: string;
-  price: string;
-  yearlyPrice?: string;
+  price: number;
+  yearlyPrice?: number;
   yearly: boolean;
   src: string;
   setselectedPlan: React.Dispatch<React.SetStateAction<any>>;
   selectedPlan: {
     name: string;
-    price: string;
+    price: number;
     plan: string;
   };
   setselect: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,6 +30,7 @@ const PlanCard = ({
   setselect,
 }: PlanCardProps) => {
   const clickHandler = () => {
+    
     setselectedPlan({
       name: name,
       plan: yearly ? "Yearly" : "Monthly",
@@ -42,7 +43,7 @@ const PlanCard = ({
       <Image src={src} alt="icon" />
       <TitleWrapper>
         <PlanTitle>{name}</PlanTitle>
-        <PlanPrice>{yearly ? yearlyPrice : price}</PlanPrice>
+        <PlanPrice>{yearly ?`$${yearlyPrice}/yr`  : `$${price}/mo`}</PlanPrice>
         {yearly && <YearlyTitle>2 month free</YearlyTitle>}
       </TitleWrapper>
     </Container>

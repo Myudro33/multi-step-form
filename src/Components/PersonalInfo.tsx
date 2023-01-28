@@ -3,17 +3,27 @@ import styled from "styled-components";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-export interface PersonalProps{
-    setpage:React.Dispatch<React.SetStateAction<number>>
-    page?:number
+export interface PersonalProps {
+  setpage: React.Dispatch<React.SetStateAction<number>>;
+  page?: number;
+  personalInfo?: {
+    name: string;
+    email: string;
+    number: number;
+  };
+  setpersonalInfo: React.Dispatch<React.SetStateAction<any>>;
 }
 
-const PersonalInfo = ({setpage}:PersonalProps) => {
+const PersonalInfo = ({
+  setpage,
+  setpersonalInfo,
+  personalInfo,
+}: PersonalProps) => {
   const formik = useFormik({
     initialValues: {
-      name: "",
-      email: "",
-      number: "",
+      name: personalInfo?.name,
+      email: personalInfo?.email,
+      number: personalInfo?.number,
     },
     validationSchema: Yup.object({
       name: Yup.string()
@@ -23,7 +33,12 @@ const PersonalInfo = ({setpage}:PersonalProps) => {
       number: Yup.number().required("Required"),
     }),
     onSubmit: (values) => {
-   setpage(2)
+      setpage(2);
+      setpersonalInfo({
+        name: values.name,
+        email: values.email,
+        number: values.number,
+      });
     },
   });
 

@@ -3,25 +3,48 @@ import styled from "styled-components";
 import AddOns from "./AddOns";
 import PersonalInfo from "./PersonalInfo";
 import SelectPlan from "./SelectPlan";
+import Summary from "./Summary";
 
-const RightBar = ({ page, setpage }) => {
-  const [selectedPlan, setselectedPlan] = useState({
-    name: "",
-    plan: "",
-    price: "",
-  });
-
+const RightBar = ({
+  page,
+  setpage,
+  setselectedPlan,
+  selectedPlan,
+  personalInfo,
+  setpersonalInfo,
+  setaddon,
+  addon,
+  plan,
+  setplan,
+}) => {
   return (
     <Container>
-      {page === 1 && <PersonalInfo setpage={setpage} />}
+      {page === 1 && (
+        <PersonalInfo
+          personalInfo={personalInfo}
+          setpersonalInfo={setpersonalInfo}
+          setpage={setpage}
+        />
+      )}
       {page === 2 && (
         <SelectPlan
+          plan={plan}
+          setplan={setplan}
           setselectedPlan={setselectedPlan}
           selectedPlan={selectedPlan}
           setpage={setpage}
         />
       )}
-      {page === 3 && <AddOns setpage={setpage} />}
+      {page === 3 && (
+        <AddOns
+          selectedPlan={selectedPlan}
+          setaddon={setaddon}
+          setpage={setpage}
+        />
+      )}
+      {page === 4 && (
+        <Summary setpage={setpage} selectedPlan={selectedPlan} addon={addon} />
+      )}
     </Container>
   );
 };

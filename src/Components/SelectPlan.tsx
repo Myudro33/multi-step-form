@@ -11,36 +11,39 @@ interface PlanProps {
   setselectedPlan: React.Dispatch<React.SetStateAction<any>>;
   selectedPlan: {
     name: string;
-    price: string;
+    price: number;
     plan: string;
   };
+  plan:boolean;
+  setplan:React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SelectPlan = ({ setpage, selectedPlan, setselectedPlan }: PlanProps) => {
-  const [plan, setplan] = useState(false);
+const SelectPlan = ({ setpage, selectedPlan, setselectedPlan,plan,setplan }: PlanProps) => {
   const [select, setselect] = useState(false);
+  console.log(selectedPlan);
+  
   const data = [
     {
       id: 1,
       name: "Arcade",
-      price: "$9/mo",
-      yearlyPrice: "$90/yr",
+      price: 9,
+      yearlyPrice: 90,
       yearly: plan,
       src: arcade,
     },
     {
       id: 2,
       name: "Advance",
-      price: "$12/mo",
-      yearlyPrice: "$120/yr",
+      price: 12,
+      yearlyPrice: 120,
       yearly: plan,
       src: advance,
     },
     {
       id: 3,
       name: "Pro",
-      price: "$15/mo",
-      yearlyPrice: "$150/yr",
+      price: 15,
+      yearlyPrice: 150,
       yearly: plan,
       src: pro,
     },
@@ -52,7 +55,17 @@ const SelectPlan = ({ setpage, selectedPlan, setselectedPlan }: PlanProps) => {
       setpage(3)
     }
   };
-
+const changeHundler = () =>{
+  if(selectedPlan.name==='Arcade'){
+    setselectedPlan({...selectedPlan,plan:plan?'Monthly':'Yearly',price:plan?9:90})  
+  }else if(selectedPlan.name==='Advance'){
+    setselectedPlan({...selectedPlan,plan:plan?'Monthly':'Yearly',price:plan?12:120})  
+  }
+  else if(selectedPlan.name==='Pro'){
+    setselectedPlan({...selectedPlan,plan:plan?'Monthly':'Yearly',price:plan?15:150})  
+  }
+  setplan((prev) => !prev)
+}
   return (
     <Container>
       <Title>Select your plan</Title>
@@ -82,7 +95,8 @@ const SelectPlan = ({ setpage, selectedPlan, setselectedPlan }: PlanProps) => {
             </SwitchTitle>
             <CheckBoxWrapper>
               <CheckBox
-                onChange={() => setplan((prev) => !prev)}
+              checked={plan}
+                onChange={changeHundler}
                 id="checkbox"
                 type="checkbox"
               />

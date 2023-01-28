@@ -4,27 +4,28 @@ import AddonCard from "./AddonCard";
 import { Button, Container, Paragraph, Title } from "./PersonalInfo";
 import { Navigation } from "./SelectPlan";
 
-const AddOns = ({ setpage }) => {
+const AddOns = ({ setpage,setaddon,selectedPlan }) => {
+  
   const data = [
     {
       id: 1,
       title: "Online Service",
       paragraph: "Access to multiplayer games",
-      price: "+$1/mo",
+      price: selectedPlan.plan==='Monthly'?1:10,
       active: true,
     },
     {
       id: 2,
       title: "Larger Storage",
       paragraph: "Extra 1TB of cloud save",
-      price: "+$2/mo",
+      price: selectedPlan.plan==='Monthly'?2:20,
       active: false,
     },
     {
       id: 3,
       title: "Customizable Profile",
       paragraph: "Custom theme on your profile",
-      price: "+$2/mo",
+      price: selectedPlan.plan==='Monthly'?2:20,
       active: false,
     },
   ];
@@ -35,6 +36,8 @@ const AddOns = ({ setpage }) => {
       <AddonsContainer>
         {data.map((item) => (
           <AddonCard
+          selectedPlan={selectedPlan}
+          setaddon={setaddon}
             active={item.active}
             id={item.id}
             key={item.id}

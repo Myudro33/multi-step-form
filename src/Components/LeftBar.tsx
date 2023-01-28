@@ -2,7 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { PersonalProps } from "./PersonalInfo";
 
-const LeftBar = ({ page, setpage }: PersonalProps) => {
+interface LeftBarProps{
+  page:number,
+  setpage:React.Dispatch<React.SetStateAction<number>>
+}
+
+const LeftBar = ({ page, setpage }:LeftBarProps) => {
   const data = [
     { id: 1, title1: "step1", title2: "your info", active: true },
     {
