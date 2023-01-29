@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import AddonCard from "./AddonCard";
-import { Button, Container, Paragraph, Title } from "./PersonalInfo";
-import { Navigation } from "./SelectPlan";
+import { Button,Paragraph,Container, Title } from "./PersonalInfo";
+import { BackParagraph, Navigation } from "./SelectPlan";
 
 const AddOns = ({ setpage,setaddon,selectedPlan }) => {
   
@@ -30,9 +30,9 @@ const AddOns = ({ setpage,setaddon,selectedPlan }) => {
     },
   ];
   return (
-    <Container>
-      <Title>Pick add-ons</Title>
-      <Paragraph>Add-ons help enhance your gaming experience.</Paragraph>
+    <Container className='nika' >
+      <Title  style={{width:'90%'}}  >Pick add-ons</Title>
+      <Paragraph style={{width:'90%'}} >Add-ons help enhance your gaming experience.</Paragraph>
       <AddonsContainer>
         {data.map((item) => (
           <AddonCard
@@ -48,12 +48,12 @@ const AddOns = ({ setpage,setaddon,selectedPlan }) => {
         ))}
       </AddonsContainer>
       <Navigation>
-        <Paragraph
+        <BackParagraph
           onClick={() => setpage(2)}
           style={{ fontWeight: 700, cursor: "pointer" }}
         >
           Go Back
-        </Paragraph>
+        </BackParagraph>
         <Button onClick={() => setpage(4)}>Next step</Button>
       </Navigation>
     </Container>
@@ -62,6 +62,9 @@ const AddOns = ({ setpage,setaddon,selectedPlan }) => {
 
 export default AddOns;
 
+
+
+
 const AddonsContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -69,3 +72,5 @@ const AddonsContainer = styled.div`
   flex-direction: column;
   margin-top: 20px;
 `;
+
+

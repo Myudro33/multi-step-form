@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Paragraph, Title } from "./PersonalInfo";
 import styled from "styled-components";
-import { Navigation } from "./SelectPlan";
+import { BackParagraph, Navigation } from "./SelectPlan";
 
 const Summary = ({ setpage, selectedPlan, addon }) => {
   const [total, settotal] = useState(0);
@@ -67,7 +67,7 @@ const Summary = ({ setpage, selectedPlan, addon }) => {
         </TotalWrapper>
       </Wrapper>
       <Navigation>
-        <Paragraph style={{fontWeight:700}} onClick={()=>setpage(3)} >Go Back</Paragraph>
+        <BackParagraph style={{fontWeight:700,cursor:'pointer'}} onClick={()=>setpage(3)} >Go Back</BackParagraph>
         <Button onClick={()=>setpage(5)} >Confirm</Button>
       </Navigation>
     </Container>
@@ -75,6 +75,7 @@ const Summary = ({ setpage, selectedPlan, addon }) => {
 };
 
 export default Summary;
+
 
 const TotalWrapper = styled.div`
   display: flex;
@@ -124,5 +125,4 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 `;

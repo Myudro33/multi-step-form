@@ -4,7 +4,7 @@ import LeftBar from "./LeftBar";
 import RightBar from "./RightBar";
 
 const FormWrapper = () => {
-  const [page, setpage] = useState(2);
+  const [page, setpage] = useState(1);
   const [selectedPlan, setselectedPlan] = useState({
     name: "",
     plan: "",
@@ -17,14 +17,12 @@ const FormWrapper = () => {
   })
   const [addon, setaddon] = useState([])
   const [plan, setplan] = useState(false);
-
-  
   return (
     <Container>
       <LeftBar page={page} setpage={setpage} />
       <RightBar
-      plan={plan}
-      setplan={setplan}
+        plan={plan}
+        setplan={setplan}
         selectedPlan={selectedPlan}
         setselectedPlan={setselectedPlan}
         page={page}
@@ -47,4 +45,8 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   background-color: white;
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;

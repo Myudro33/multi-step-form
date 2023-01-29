@@ -106,12 +106,12 @@ const changeHundler = () =>{
             </SwitchTitle>
           </BottomSwitch>
           <Navigation>
-            <Paragraph
+            <BackParagraph
               style={{ fontWeight: 700, cursor: "pointer" }}
               onClick={() => setpage(1)}
             >
               Go Back
-            </Paragraph>
+            </BackParagraph>
             <Button onClick={submitHandler}>Next step</Button>
           </Navigation>
         </BottomWrapper>
@@ -121,6 +121,13 @@ const changeHundler = () =>{
 };
 
 export default SelectPlan;
+
+export const BackParagraph = styled(Paragraph)`
+  &:hover{
+    color: #02295a;
+  }
+`
+
 
 const ErrorTitle = styled.p`
   font-size: 16px;
@@ -167,6 +174,9 @@ const PlanWrapper = styled.div`
   height: 190px;
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width:400px) {
+    flex-direction: column;
+  }
 `;
 
 const Wrapper = styled.div`

@@ -19,7 +19,7 @@ const RightBar = ({
   setplan,
 }) => {
   return (
-    <Container>
+    <Container >
       {page === 1 && (
         <PersonalInfo
           personalInfo={personalInfo}
@@ -58,6 +58,12 @@ export default RightBar;
 const Container = styled.div`
   width: 65%;
   height: 100%;
-  border: 1px solid black;
   padding: 25px 20px 10px 30px;
+  @media screen and (max-width: 400px) {
+    z-index: 1;
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px 10px;
+  }
 `;

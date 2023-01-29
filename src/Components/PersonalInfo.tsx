@@ -182,4 +182,8 @@ export const Container = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  @media screen and (max-width:400px) {
+    width: 100%;
+    padding: 0;
+  }
 `;

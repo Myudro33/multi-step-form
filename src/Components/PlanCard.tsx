@@ -30,7 +30,6 @@ const PlanCard = ({
   setselect,
 }: PlanCardProps) => {
   const clickHandler = () => {
-    
     setselectedPlan({
       name: name,
       plan: yearly ? "Yearly" : "Monthly",
@@ -43,7 +42,7 @@ const PlanCard = ({
       <Image src={src} alt="icon" />
       <TitleWrapper>
         <PlanTitle>{name}</PlanTitle>
-        <PlanPrice>{yearly ?`$${yearlyPrice}/yr`  : `$${price}/mo`}</PlanPrice>
+        <PlanPrice>{yearly ? `$${yearlyPrice}/yr` : `$${price}/mo`}</PlanPrice>
         {yearly && <YearlyTitle>2 month free</YearlyTitle>}
       </TitleWrapper>
     </Container>
@@ -75,6 +74,10 @@ const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  @media screen and (max-width: 400px) {
+    width: 80%;
+    justify-content: center;
+  }
 `;
 
 const Image = styled.img`
@@ -102,4 +105,11 @@ const Container = styled.div`
       : "2px solid hsl(229, 24%, 87%);"};
   transition: 0.5s;
   cursor: pointer;
+  @media screen and (max-width: 400px) {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    margin: 10px 0px;
+  }
 `;

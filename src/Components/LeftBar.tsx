@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { PersonalProps } from "./PersonalInfo";
 
-interface LeftBarProps{
-  page:number,
-  setpage:React.Dispatch<React.SetStateAction<number>>
+interface LeftBarProps {
+  page: number;
+  setpage: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const LeftBar = ({ page, setpage }:LeftBarProps) => {
+const LeftBar = ({ page, setpage }: LeftBarProps) => {
   const data = [
     { id: 1, title1: "step1", title2: "your info", active: true },
     {
@@ -58,6 +58,9 @@ const PageNumber = styled.div`
   color: ${(props) => (props.full ? "black" : "white")};
   background-color: ${(props) => (props.full ? "#bfe2fd" : "transparent")};
   font-weight: 700;
+  @media screen and (max-width: 400px) {
+    width: 40px;
+  }
 `;
 
 const StepTitleP = styled.p`
@@ -74,6 +77,9 @@ const StepTitleContainer = styled.div`
   width: 140px;
   height: 40px;
   margin-left: 15px;
+  @media screen and (max-width: 400px) {
+    display: none;
+  }
 `;
 const StepContainer = styled.div`
   width: 90%;
@@ -81,6 +87,10 @@ const StepContainer = styled.div`
   margin: 10px auto;
   display: flex;
   align-items: center;
+  @media screen and (max-width: 400px) {
+    width: 40px;
+    margin: 30px 10px 0px 10px;
+  }
 `;
 
 const Container = styled.div`
@@ -90,4 +100,16 @@ const Container = styled.div`
   overflow: hidden;
   padding: 8px;
   background: url("https://multistep-form-23.netlify.app/assets/images/bg-sidebar-desktop.svg");
+  @media screen and (max-width: 400px) {
+    position: absolute;
+    background: url("https://multistep-form-23.netlify.app/assets/images/bg-sidebar-mobile.svg");
+    height: 190px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    border-radius: 0px;
+  }
 `;
