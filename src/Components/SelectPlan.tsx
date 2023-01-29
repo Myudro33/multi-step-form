@@ -20,7 +20,6 @@ interface PlanProps {
 
 const SelectPlan = ({ setpage, selectedPlan, setselectedPlan,plan,setplan }: PlanProps) => {
   const [select, setselect] = useState(false);
-  console.log(selectedPlan);
   
   const data = [
     {

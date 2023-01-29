@@ -1,11 +1,21 @@
-import React, { useState } from "react";
-import { Container, Paragraph, Title } from "./PersonalInfo";
+import React, { useEffect, useState } from "react";
+import { Button, Container, Paragraph, Title } from "./PersonalInfo";
 import styled from "styled-components";
+import { Navigation } from "./SelectPlan";
 
 const Summary = ({ setpage, selectedPlan, addon }) => {
   const [total, settotal] = useState(0);
 
-  console.log(selectedPlan);
+  
+  useEffect(()=>{
+    settotal(selectedPlan.price)
+      addon.map((item)=>{
+        settotal(total=>total+=item.price)
+      })
+      
+    },[])
+    
+    
 
   return (
     <Container>
@@ -52,10 +62,14 @@ const Summary = ({ setpage, selectedPlan, addon }) => {
             Total( per month)
           </Paragraph>
           <Title style={{ color: "hsl(243, 100%, 62%)", fontSize: "25px" }}>
-            $14/mo
+              {`$${total}/${selectedPlan.plan==='Monthly'?'mo':'yr'}`}
           </Title>
         </TotalWrapper>
       </Wrapper>
+      <Navigation>
+        <Paragraph style={{fontWeight:700}} onClick={()=>setpage(3)} >Go Back</Paragraph>
+        <Button onClick={()=>setpage(5)} >Confirm</Button>
+      </Navigation>
     </Container>
   );
 };
