@@ -4,6 +4,7 @@ import AddOns from "./AddOns";
 import PersonalInfo from "./PersonalInfo";
 import SelectPlan from "./SelectPlan";
 import Summary from "./Summary";
+import ThankYou from "./ThankYou";
 
 const RightBar = ({
   page,
@@ -44,6 +45,9 @@ const RightBar = ({
       )}
       {page === 4 && (
         <Summary setpage={setpage} selectedPlan={selectedPlan} addon={addon} />
+      )}
+      {page===5&&(
+        <ThankYou/>
       )}
     </Container>
   );
